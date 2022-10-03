@@ -1,0 +1,140 @@
+// Nama : Muhammad Fachrizal Giffari
+// NIM  : 22/504570/TK/55192
+// Kelompok : Gauss
+
+#include <iostream>
+
+using namespace std;
+
+int main ()
+{
+  cout << "Program Perkalian Dua Matriks\n\n";
+
+  //input baris dan kolom
+  cout << "Matriks 1" << endl;
+  int a, b;
+  cout << "Ada berapa baris? : ";
+  cin >> a;
+  cout << "Ada berapa kolom? : ";
+  cin >> b;
+  int c[a][b];
+
+      //input elemen-elemen matriks
+      for (int j = 0; j < a; j++)
+        {
+              for (int k = 0; k < b; k++)
+        	{
+        	  cout << "Baris " << j + 1;
+        	  cout << " Kolom " << k + 1 << " : ";
+        	  cin >> c[j][k];
+        	}
+        }
+
+  //input baris dan kolom
+  cout << "\nMatriks 2" << endl;
+  int d, e;
+  cout << "Ada berapa baris? : ";
+  cin >> d;
+  cout << "Ada berapa kolom? : ";
+  cin >> e;
+  int f[d][e];
+
+      //input elemen-elemen matriks
+      for (int j = 0; j < d; j++)
+        {
+              for (int k = 0; k < e; k++)
+        	{
+        	  cout << "Baris " << j + 1;
+        	  cout << " Kolom " << k + 1 << " : ";
+        	  cin >> f[j][k];
+        	}
+        }
+
+    //menampilkan matriks 1
+          cout << "\nMatriks 1 :" << endl;
+          for (int j = 0; j < a; j++)
+            {
+                  for (int k = 0; k < b; k++)
+            	{
+            	  cout << c[j][k] << "\t";
+            	}
+              cout << endl;
+            }
+        
+    //menampilkan matriks 2            
+          cout << "\nMatriks 2 :" << endl;
+          for (int j = 0; j < d; j++)
+            {
+                  for (int k = 0; k < e; k++)
+            	{
+            	  cout << f[j][k] << "\t";
+            	}
+              cout << endl;
+            }
+
+  cout << endl;
+
+  //algoritma perkalian matriks   
+  //perkalian skalar dengan matriks
+  if (a && b == 1)
+    {
+      cout << "Matriks 1 x Matriks 2 : \n";
+          for (int j = 0; j < d; j++)
+    	{
+    	  for (int k = 0; k < e; k++)
+    	    {
+    	      f[j][k] *= c[0][0];
+    	      cout << f[j][k] << "\t";
+    	    }
+    	  cout << endl;
+    	}
+    }
+  else if (d && e == 1)
+    {
+      cout << "Matriks 1 x Matriks 2 : \n";
+          for (int j = 0; j < a; j++)
+    	{
+    	  for (int k = 0; k < b; k++)
+    	    {
+    	      c[j][k] *= f[0][0];
+    	      cout << c[j][k] << "\t";
+    	    }
+    	  cout << endl;
+    	}
+    }
+      //bentuk matriks A dikali matriks B menggunakan metode dot product
+      else if (a == e)
+        {
+        int jumlah = 0;
+        int hasil [a][e];
+          cout << "Matriks 1 x Matriks 2 : \n";
+            for(int i = 0; i < a; i++)
+                {
+                    for(int j = 0; j < a; j++)
+                    {
+                        for(int k = 0; k < e; k++)
+                        {
+                        jumlah = jumlah + c[i][k] * f[k][j];
+                        }
+                        hasil[i][j] = jumlah;
+                        jumlah = 0;
+                    }
+                }
+            for (int i = 0; i < a; i++)
+            {
+                for (int j = 0; j < e; j ++)
+                {
+                    cout<<hasil[i][j]<<"\t";
+                }
+                cout<<endl;
+            }
+        }
+                //hasil jika matriks a dan matriks b tidak bisa dikali
+          else
+            {
+              cout << "\nMatriks 1 tidak bisa dikali dengan Matriks 2";
+              cout << "\nBanyaknya Baris dari Matriks 1 harus sama dengan Banyaknya Kolom dari Matriks 2";
+            }
+
+  return 0;
+}
